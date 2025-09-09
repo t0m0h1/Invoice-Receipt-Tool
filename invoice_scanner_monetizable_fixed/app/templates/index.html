@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card p-4">
+  <h3>Upload invoice or receipt</h3>
+  <form action="{{ url_for('scan.upload') }}" method="post" enctype="multipart/form-data" class="mb-3">
+    <div class="mb-3">
+      <input class="form-control" type="file" name="file" accept=".png,.jpg,.jpeg,.pdf" required>
+    </div>
+    <button class="btn btn-primary">Upload</button>
+  </form>
+
+  <h5 class="mt-4">API</h5>
+  <p>POST <code>/scan/</code> (multipart form 'file') -> JSON</p>
+  <p>Use header <code>X-API-KEY</code> or pass <code>api_key</code> form field for API key.</p>
+</div>
+{% endblock %}

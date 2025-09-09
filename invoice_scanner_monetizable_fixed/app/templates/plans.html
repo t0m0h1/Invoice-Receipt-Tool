@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Plans</h3>
+<ul class="list-group">
+{% for p in plans %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <strong>{{p.name}}</strong> &mdash; price: {{p.price}} (cents) &mdash; quota: {{p.quota}}
+    </div>
+    <form method="post" action="{{ url_for('billing.subscribe') }}">
+      <input type="hidden" name="plan" value="{{p.id}}">
+      <button class="btn btn-sm btn-outline-primary">Subscribe (placeholder)</button>
+    </form>
+  </li>
+{% endfor %}
+</ul>
+{% endblock %}
